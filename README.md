@@ -1,2 +1,0 @@
-# drdilyor.github.io
- 
