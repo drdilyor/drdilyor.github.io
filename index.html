@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
@@ -11,7 +12,7 @@
 <body>
   <header class="page page-head">
     <canvas id="matrix"></canvas>
-    <div class="container">
+    <div class="page__constraint">
       <nav class="navbar">
         <a class="navbar__brand" href="/">drdilyor</a>
         <div class="navbar__links">
@@ -21,32 +22,34 @@
       </nav>
       <div class="page-head__content">
         <div class="term">
-          <span class="term__prompt">[drdilyor@me]$ </span>
+          <span class="term__prompt">[drdilyor@me]$&nbsp;</span>
           <span class="term__command">cat ./about</span>
-          <span class="term__exec">
+          <input class="term__input" autofocus>
+          <span class="term__cursor"></span>
         </div>
       </div>
     </div>
   </header>
   <section class="page page-about">
-    <div class="container">
+    <div class="constrainted">
       <div class="about">
-        <img class="about__img" src="img/about.jpg">
+        <img class="about__img" src="img/about.jpg" width="256" height="256">
         <p class="about__text">
-          I'm drdilyor (Dilyorbek Valijonov), a Web Developer from Uzbekistan,
-          self-taught software developer.
+          I'm drdilyor (Dilyorbek Valijonov), a self-taught Web Developer from Uzbekistan.
           I'm mostly interested in new technologies and living on the cutting edge.
           My biggest interests are: web technologies and linux.
           In spare time, I usually play chess or code :P
         </p>
         <p class="about__text">
-          I'm at 15, so I have yet to learn a lot both from the life and about programming.
-          Since early childhood, I was interested in computers and how they work. I started
-          seriously programming when I was about 14.
+          I'm at late 15, so I have yet to learn a lot both from the life and about programming.
+          Since early childhood, I was interested in computers and how they work. I first saw
+          beauty of programming at 14 and started seriously doing programming. I still don't
+          regret that I took this path in my life.
         </p>
       </div>
     </div>
   </section>
   <script src="matrix.js"></script>
+  <script src="term.js"></script>
 </body>
 </html>

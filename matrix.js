@@ -6,7 +6,7 @@ const ctx = canvas.getContext('2d')
 
 let start = performance.now()
 let _matrixPlaying = false
-let _pusherIntervalId
+let _pusherTimeoutId
 let _loopTimeoutId
 const FRAME_MS = 1000 / 15
 
@@ -15,7 +15,10 @@ let randomTexts = [
   '[root@156.81.12.5]# ls /www/wwwroot',
   'drdilyor developer',
   'function(',
-  'inoremap <expr> <tab> MyTabImpl()'
+  'inoremap <expr> <tab> MyTabImpl()',
+  'javascript python telegram',
+  'backend linux arch',
+  '\\*${]+-#λ?!.#&>,@/=',
 ]
 
 function setupCanvas() {
@@ -36,15 +39,16 @@ function loop() {
 function startMatrix() {
   if (_matrixPlaying) return
   _loopTimeoutId = setTimeout(loop, FRAME_MS)
-  _pusherIntervalId = setInterval(() => {
+  _pusherTimeoutId = setTimeout(function self() {
     charStreams.push(newCharStream())
-  }, 200)
+    _pusherTimeoutId = setTimeout(self, 2e5 / canvas.width)
+  })
   update(0)
   _matrixPlaying = true
 }
 
 function stopMatrix() {
-  clearInterval(_pusherIntervalId)
+  clearTimeout(_pusherTimeoutId)
   clearTimeout(_loopTimeoutId)
   charStreams = []
   _matrixPlaying = false

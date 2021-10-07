@@ -1,7 +1,3 @@
-@font-face {
-  
-}
-
 :root {
   --primary-50: #f7fee7;
   --primary-100: #ecfccb;
@@ -33,22 +29,49 @@
   --size-8: 1rem;
   --size-12: 1.5rem;
   --size-16: 2rem;
+  --size-32: 4rem;
 
   font-size: 16px;
   font-family: "IBM Plex Mono", monospace;
 }
 
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+:root {
+  scroll-behavior: smooth
+}
+
 .page {
-  min-height: 100vh;
-  padding: var(--size-16);
+  display: flex;
+  justify-content: center;
+  padding: var(--size-32) var(--size-16);
+}
+
+.page__constraint {
+  width: 980px;
+  max-width: 980px;
 }
 
 .page-head {
+  min-height: 100vh;
   padding-top: 0;
+  padding-bottom: 0;
   color: white;
 }
 
+.page-head > .page__constraint {
+  display: flex;
+  flex-direction: column;
+}
+
 .page-head__content {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,3 +86,35 @@
   height: 100%;
   z-index: -1;
 }
+
+.term {
+  display: flex;
+  line-height: 1;
+  background: rgba(0, 0, 0, .5);
+}
+
+.term__input {
+  width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+.term__cursor {
+  width: 0.5rem;
+  height: 1rem;
+}
+
+.term__input:focus ~ .term__cursor {
+  background: white;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {opacity: 1}
+  60% {opacity: 1}
+  70% {opacity: 0}
+  100% {opacity: 0}
+}
+
