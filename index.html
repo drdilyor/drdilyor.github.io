@@ -1,1 +1,52 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>drdilyor</title>
+</head>
+<body>
+  <header class="page page-head">
+    <canvas id="matrix"></canvas>
+    <div class="container">
+      <nav class="navbar">
+        <a class="navbar__brand" href="/">drdilyor</a>
+        <div class="navbar__links">
+          <a class="navbar__link" href="#about">About</a>
+          <a class="navbar__link" href="#projects">Projects</a>
+        </div>
+      </nav>
+      <div class="page-head__content">
+        <div class="term">
+          <span class="term__prompt">[drdilyor@linuxbox]$ </span>
+          <span class="term__command">cat ./about</span>
+          <span class="term__exec">
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="page page-about">
+    <div class="container">
+      <div class="about">
+        <img class="about__img" src="img/about.jpg">
+        <p class="about__text">
+          I'm drdilyor (Dilyorbek Valijonov), a Web Developer from Uzbekistan,
+          self-taught software developer.
+          I'm mostly interested in new technologies and living on the cutting edge.
+          My biggest interests are: web technologies and linux.
+          In spare time, I usually play chess or code :P
+        </p>
+        <p class="about__text">
+          I'm at 15, so I have yet to learn a lot both from the life and about programming.
+          Since early childhood, I was interested in computers and how they work. I started
+          seriously programming when I was about 14.
+        </p>
+      </div>
+    </div>
+  </section>
+  <script src="matrix.js"></script>
+</body>
+</html>

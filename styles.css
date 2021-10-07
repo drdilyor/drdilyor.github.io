@@ -1,0 +1,65 @@
+@font-face {
+  
+}
+
+:root {
+  --primary-50: #f7fee7;
+  --primary-100: #ecfccb;
+  --primary-200: #d9f99d;
+  --primary-300: #bef264;
+  --primary-400: #a3e635;
+  --primary-500: #84cc16;
+  --primary-600: #65a30d;
+  --primary-700: #4d7c0f;
+  --primary-800: #3f6212;
+  --primary-900: #365314;
+
+  --gray-50: #fafafa;
+  --gray-100: #f4f4f5;
+  --gray-200: #e4e4e7;
+  --gray-300: #d4d4d8;
+  --gray-400: #a1a1aa;
+  --gray-500: #71717a;
+  --gray-600: #52525b;
+  --gray-700: #3f3f46;
+  --gray-800: #27272a;
+  --gray-900: #18181b;
+
+  --size-1: .125rem;
+  --size-2: .25rem;
+  --size-3: .375rem;
+  --size-4: .5rem;
+  --size-6: .75rem;
+  --size-8: 1rem;
+  --size-12: 1.5rem;
+  --size-16: 2rem;
+
+  font-size: 16px;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.page {
+  min-height: 100vh;
+  padding: var(--size-16);
+}
+
+.page-head {
+  padding-top: 0;
+  color: white;
+}
+
+.page-head__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#matrix {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
