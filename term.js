@@ -4,6 +4,7 @@ document.querySelector('.page-head__content').addEventListener('click', function
 
 document.querySelector('.term__input').addEventListener('keydown', function(e) {
   if (e.key == 'Enter' || e.key == ' ') {
+    document.querySelector('.term__input').blur()
     document.querySelector('.page-head ~ .page').scrollIntoView()
   }
 })
