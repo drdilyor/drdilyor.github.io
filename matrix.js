@@ -25,56 +25,47 @@ let randomTexts = [
 
 function newCharStream() {
   let text = randomTexts[randomRange(0, randomTexts.length)]
-  let history = []
-  let current = {
-    x: randomRange(0, canvas.width),
-    y: randomRange(0, canvas.height),
-    index: 0,
-    opacity: 1.0,
-  }
-  let direction = ['horizontal', 'vertical'][randomRange(0, 2)]
-  let isOver = false
-  let char = {
+  let charSize = {
     width: 16,
     height: 24,
   }
+  let direction = [
+    {x: 0, y: 1},
+    {x: 1, y: 0},
+  ][randomRange(0, 2)]
+  let startX = randomRange(0, canvas.width) - charSize.width * 5
+  let startY = randomRange(0, canvas.height) - charSize.height * 5
+  let frames = [...text].map((char, index) => ({
+    x: startX + direction.x * charSize.width * index,
+    y: startY + direction.y * charSize.height * index,
+    char,
+    opacity: 0,
+  }))
 
-  let timeSinceLastUpdate = 0
-  const ADVANCE_MS = 200
-  const CHAR_DURATION = 2000
-
+  let currentFrame = 0
+  const ADVANCE_MS = 100
+  let timeSinceLastAdvance = ADVANCE_MS
+  const CHAR_DURATION = 3000
   return {
-    draw(elapsed = 20) {
-      if (current.index >= text.length) {
-        isOver = true
-      }
-      if (isOver && history[history.length - 1].opacity <= 0) {
+    draw(elapsed) {
+      let isOver = currentFrame >= frames.length
+
+      if (isOver && frames[frames.length - 1].opacity <= 0) {
         return false
       }
 
-      if (!isOver && (timeSinceLastUpdate += elapsed) >= ADVANCE_MS) {
-        timeSinceLastUpdate %= ADVANCE_MS
-
-        history.push(current)
-        current = {...current, opacity: 1.0}
-        current.index += 1
-
-        if (direction == 'horizontal') {
-          current.x += char.width
-        } else {
-          current.y += char.height
-        }
+      if (!isOver && (timeSinceLastAdvance += elapsed) >= ADVANCE_MS) {
+        timeSinceLastAdvance %= ADVANCE_MS
+        frames[currentFrame++].opacity = 1
       }
 
-      for (const item of history) {
+      for (const item of frames) {
         if (item.opacity <= 0) {
           continue
         }
-        ctx.fillStyle = item == history[history.length]
-          ? '#ffffff'
-          : `rgba(0, 255, 0, ${item.opacity})`
-        ctx.font = `${char.height}px "IBM Plex Mono", monospace`
-        ctx.fillText(text[item.index], item.x, item.y)
+        ctx.fillStyle = `rgba(0, 255, 0, ${item.opacity})`
+        ctx.font = `${charSize.height}px "IBM Plex Mono", monospace`
+        ctx.fillText(item.char, item.x, item.y)
         item.opacity -= elapsed / CHAR_DURATION
       }
 
@@ -92,22 +83,23 @@ function update(elapsed) {
 let start = performance.now() | 0
 const FRAME_MS = 1000 / 15
 
-setTimeout(function self() {
+function loop() {
   let now = performance.now() | 0
   let elapsed = now - start
   start = now
 
   update(elapsed)
   let updateTime = performance.now() - now
-  console.log(FRAME_MS - updateTime)
-  setTimeout(self, FRAME_MS - updateTime)
-})
+  setTimeout(loop, FRAME_MS - updateTime)
+}
+
+setTimeout(loop)
 
 update(0)
 
 
 setInterval(function() {
   charStreams.push(newCharStream())
-}, 100)
+}, 200)
 
 window.addEventListener('resize', setupCanvas)
