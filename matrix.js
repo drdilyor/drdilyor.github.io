@@ -4,24 +4,61 @@
 const canvas = document.getElementById('matrix')
 const ctx = canvas.getContext('2d')
 
-function setupCanvas() {
-  canvas.width = window.innerWidth
-  canvas.height = window.innerHeight
-}
-
-setupCanvas()
-
-function randomRange(a, exclusiveB) {
-  return (Math.random() * (exclusiveB - a) | 0) + a
-}
+let start = performance.now()
+let _matrixPlaying = false
+let _pusherIntervalId
+let _loopTimeoutId
+const FRAME_MS = 1000 / 15
 
 let charStreams = []
 let randomTexts = [
   '[root@156.81.12.5]# ls /www/wwwroot',
   'drdilyor developer',
   'function(',
-  'inoremap <nowait><expr> <tab> MyTabImpl()'
+  'inoremap <expr> <tab> MyTabImpl()'
 ]
+
+function setupCanvas() {
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+}
+
+function loop() {
+  let now = performance.now()
+  let elapsed = now - start
+  start = now
+
+  update(elapsed)
+  let updateTime = performance.now() - now
+  _loopTimeoutId = setTimeout(loop, FRAME_MS - updateTime)
+}
+
+function startMatrix() {
+  if (_matrixPlaying) return
+  _loopTimeoutId = setTimeout(loop, FRAME_MS)
+  _pusherIntervalId = setInterval(() => {
+    charStreams.push(newCharStream())
+  }, 200)
+  update(0)
+  _matrixPlaying = true
+}
+
+function stopMatrix() {
+  clearInterval(_pusherIntervalId)
+  clearTimeout(_loopTimeoutId)
+  charStreams = []
+  _matrixPlaying = false
+}
+
+function update(elapsed) {
+  ctx.fillStyle = '#000000'
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
+  charStreams = charStreams.filter(i => i.draw(elapsed))
+}
+
+function randomRange(a, exclusiveB) {
+  return (Math.random() * (exclusiveB - a) | 0) + a
+}
 
 function newCharStream() {
   let text = randomTexts[randomRange(0, randomTexts.length)]
@@ -46,6 +83,7 @@ function newCharStream() {
   const ADVANCE_MS = 100
   let timeSinceLastAdvance = ADVANCE_MS
   const CHAR_DURATION = 3000
+
   return {
     draw(elapsed) {
       let isOver = currentFrame >= frames.length
@@ -74,32 +112,14 @@ function newCharStream() {
   }
 }
 
-function update(elapsed) {
-  ctx.fillStyle = '#000000'
-  ctx.fillRect(0, 0, canvas.width, canvas.height)
-  charStreams = charStreams.filter(i => i.draw(elapsed))
-}
-
-let start = performance.now() | 0
-const FRAME_MS = 1000 / 15
-
-function loop() {
-  let now = performance.now() | 0
-  let elapsed = now - start
-  start = now
-
-  update(elapsed)
-  let updateTime = performance.now() - now
-  setTimeout(loop, FRAME_MS - updateTime)
-}
-
-setTimeout(loop)
-
-update(0)
-
-
-setInterval(function() {
-  charStreams.push(newCharStream())
-}, 200)
+setupCanvas()
+startMatrix()
 
 window.addEventListener('resize', setupCanvas)
+window.addEventListener('scroll', function() {
+  if (window.scrollY < canvas.height) {
+    startMatrix()
+  } else {
+    stopMatrix()
+  }
+}, {passive: true})
