@@ -12,25 +12,25 @@
 <body>
   <header class="page page-head">
     <canvas id="matrix"></canvas>
-    <div class="page__constraint">
-      <nav class="navbar">
-        <a class="navbar__brand" href="/">drdilyor</a>
+    <nav class="navbar__wrapper">
+      <div class="navbar constrainted">
+        <span class="navbar__brand">drdilyor</span>
         <div class="navbar__links">
-          <a class="navbar__link" href="#about">About</a>
+          <a class="navbar__link " href="#about">About</a>
           <a class="navbar__link" href="#projects">Projects</a>
         </div>
-      </nav>
-      <div class="page-head__content">
-        <div class="term">
-          <span class="term__prompt">[drdilyor@me]$&nbsp;</span>
-          <span class="term__command">cat ./about</span>
-          <input class="term__input" autofocus>
-          <span class="term__cursor"></span>
-        </div>
+      </div>
+    </nav>
+    <div class="constrainted page-head__content">
+      <div class="term">
+        <span class="term__prompt">[drdilyor@me]$&nbsp;</span>
+        <span class="term__command">cat ./about</span>
+        <input class="term__input" autofocus>
+        <span class="term__cursor"></span>
       </div>
     </div>
   </header>
-  <section class="page page-about">
+  <section id="about" class="page page-about">
     <div class="constrainted">
       <div class="about">
         <img class="about__img" src="img/about.jpg" width="256" height="256">
@@ -49,6 +49,7 @@
       </div>
     </div>
   </section>
+  <script src="navbar.js"></script>
   <script src="matrix.js"></script>
   <script src="term.js"></script>
 </body>

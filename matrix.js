@@ -16,8 +16,8 @@ let randomTexts = [
   'drdilyor developer',
   'function(',
   'inoremap <expr> <tab> MyTabImpl()',
-  'javascript python telegram',
-  'backend linux arch',
+  'javascript python backend',
+  'telegram linux arch',
   '\\*${]+-#λ?!.#&>,@/=',
 ]
 
