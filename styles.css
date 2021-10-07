@@ -31,13 +31,23 @@
   --size-16: 2rem;
   --size-32: 4rem;
 
+  --duration-short: 90ms;
   --duration-swift: 200ms;
 
+  --font-text: "Roboto", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /*
+   * Screen sizes:
+   * md: 768px
+   * lg: 1200px
+  */
+
   font-size: 16px;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-text);
 }
 
-*, *:after, *:before {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -50,12 +60,47 @@ body {
 }
 
 .page {
-  padding: var(--size-32) var(--size-16);
+  padding: var(--size-16) var(--size-16) var(--size-32);
 }
 
 .constrainted {
   max-width: 980px;
   margin: 0 auto;
+}
+
+.page__header {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding-bottom: var(--size-8);
+  font-size: 2rem;
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
+.page__header a {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.page__header a::before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--size-4);
+  background: var(--primary-300);
+  transform-origin: bottom;
+  will-change: transform;
+  transition: transform var(--duration-short);
+}
+
+.page__header a:hover::before {
+  transform: scaleY(300%);
 }
 
 .page-head {
@@ -87,6 +132,7 @@ body {
 .term {
   display: flex;
   line-height: 1;
+  font-family: var(--font-mono);
   background: rgba(0, 0, 0, .5);
 }
 
@@ -116,12 +162,13 @@ body {
 }
 
 .navbar__wrapper {
-  z-index: 1;
+  z-index: 1000;
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   padding: var(--size-4) var(--size-8);
+  font-family: var(--font-mono);
   line-height: 1;
   color: black;
   background: var(--primary-500);
@@ -157,4 +204,32 @@ body {
 
 .navbar__link:active {
   background: transparent;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-text);
+}
+
+.about__img {
+  /* and you thought it is useless? */
+  box-sizing: content-box;
+  align-self: center;
+  border: var(--size-1) solid var(--primary-500);
+  border-radius: 50%;
+}
+
+.about__text {
+  margin: 0;
+  padding-top: var(--size-8);
+}
+
+@media (min-width: 768px) {
+  .about {
+    flex-direction: row;
+  }
+  .about__text {
+    padding-left: var(--size-12);
+  }
 }
