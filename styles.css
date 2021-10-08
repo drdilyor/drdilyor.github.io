@@ -145,6 +145,11 @@ body {
   color: white;
 }
 
+.page-head > .constrainted {
+  flex: 1;
+  margin: 0;
+}
+
 .page-head__content {
   flex: 1;
   display: flex;

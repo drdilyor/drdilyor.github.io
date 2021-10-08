@@ -26,6 +26,7 @@ function setupCanvas() {
   canvas.height = window.innerHeight
   ctx.fillStyle = '#000000'
   ctx.fillRect(0, 0, canvas.width, canvas.height)
+  update(0)
 }
 
 function loop() {
@@ -40,12 +41,12 @@ function loop() {
 
 function startMatrix() {
   if (_matrixPlaying) return
+  setupCanvas()
   _loopTimeoutId = setTimeout(loop, FRAME_MS)
   _pusherTimeoutId = setTimeout(function self() {
     charStreams.push(newCharStream())
     _pusherTimeoutId = setTimeout(self, 2e5 / canvas.width)
   })
-  update(0)
   _matrixPlaying = true
 }
 
@@ -118,7 +119,6 @@ function newCharStream() {
   }
 }
 
-setupCanvas()
 startMatrix()
 
 window.addEventListener('resize', setupCanvas)
