@@ -35,7 +35,7 @@
   --duration-swift: 200ms;
 
   --font-text: "Roboto", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --font-mono: "IBM Plex Mono", sans-serif;
 
   /*
    * Screen sizes:
@@ -59,8 +59,17 @@ body {
   scroll-behavior: smooth
 }
 
+/* reusable pieces of css that can be extended with commas */
+/* page-full */
+.page-head {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+/* end */
+
 .page {
-  padding: var(--size-16) var(--size-16) var(--size-32);
+  padding: var(--size-16) 0 var(--size-32);
 }
 
 .constrainted {
@@ -70,22 +79,49 @@ body {
 
 .page__header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   margin: 0;
   padding-bottom: var(--size-8);
-  font-size: 2rem;
   font-family: var(--font-mono);
-  line-height: 1;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.page__header::before,
+.page__header::after {
+  content: '';
+  flex: 1;
+  display: block;
+  height: var(--size-1);
+  background: black;
 }
 
 .page__header a {
+  --underline-color: var(--primary-200);
   position: relative;
+  padding: 0 var(--size-1);
+  margin: 0 var(--size-12);
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+  background: linear-gradient(
+    to bottom,
+    transparent calc(50% - 9px),
+    var(--underline-color) calc(50% - 9px));
+  background-size: 100% 200%;
+  background-position: 0 0;
+  transition: background-position var(--duration-short);
 }
 
-.page__header a::before {
+.page__header a:hover {
+  --underline-color: var(--primary-400);
+  background-position: 0 100%;
+}
+
+/*.page__header a::before {
   z-index: -1;
   content: '';
   position: absolute;
@@ -93,20 +129,17 @@ body {
   right: 0;
   bottom: 0;
   height: var(--size-4);
-  background: var(--primary-300);
   transform-origin: bottom;
   will-change: transform;
   transition: transform var(--duration-short);
-}
+}*/
 
 .page__header a:hover::before {
   transform: scaleY(300%);
+  background: var(--primary-200);
 }
 
 .page-head {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
   padding-top: 0;
   padding-bottom: 0;
   color: white;
@@ -209,6 +242,7 @@ body {
 .about {
   display: flex;
   flex-direction: column;
+  padding: 0 var(--size-8);
   font-family: var(--font-text);
 }
 
@@ -230,6 +264,6 @@ body {
     flex-direction: row;
   }
   .about__text {
-    padding-left: var(--size-12);
+    padding-left: var(--size-8);
   }
 }
