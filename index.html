@@ -6,10 +6,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <title>drdilyor</title>
 </head>
 <body>
+  <!--
+    This page uses "css depends on html" technique,
+    It means that HTML is decoupled from how it will appear
+    on screen as much as possible. This allows changing CSS without
+    touching HTML, but modifying HTML will be a lot more work.
+
+    Example: instead of using "button" class on navbar links, I
+    used "navbar__link" class. Because then I may make them look
+    different that buttons and I won't touch HTML to change "button" class
+    to other meaningful name.
+
+    An exception was made with "constrainted". Because I found no reason
+    to not to have such a class. Otherwise I had to write `.page > div` which
+    is not only error-prone and cumbersome, but also ambigous and hard to read and
+    doesn't always work (e.g. with navbar). Anyway, it's still easy to remove
+    or change "constrainted" without affecting HTML, I guess.
+  -->
   <header class="page page-head">
     <canvas id="matrix"></canvas>
     <nav class="navbar__wrapper">
@@ -49,6 +67,38 @@
           beauty of programming at 14 and started seriously doing programming. I still don't
           regret that I took this path in my life.
         </p>
+      </div>
+    </div>
+  </section>
+  <section id="links" class="page page-links">
+    <div class="constrainted page-links__content">
+      <a class="page-links__item" href="https://github.com/drdilyor">GitHub</a>
+      <a class="page-links__item" href="https://stackoverflow.com/users/13449712/drdilyor">StackOverflow</a>
+      <a class="page-links__item" href="https://t.me/drdilyor">Telegram</a>
+    </div>
+  </section>
+  <section id="web3" class="page page-web3">
+    <div class="constrainted">
+      <h2 class="page__header">
+        <a href="#web3">Web 3</a>
+      </h2>
+      <div class="page-web3__text">
+        <p>
+          I believe in Web 3.0 as the future. Distributed and decentralized networks
+          are growing fast and I'm inviting other people to join. Let's make Web 3.0
+          the standard.
+        </p>
+        <p class="page-web3__links">
+          <a class="page-web3__link" href="https://www.freecodecamp.org/news/what-is-web3/" target="_blank">
+            About Web3
+          </a>
+          <a class="page-web3__link" href="#" target="_blank">
+            This page on IPFS
+          </a>
+        </p>
+      </div>
+      <div class="page-web3__img">
+        <div class="page-web3__big">WEB3</div>
       </div>
     </div>
   </section>
