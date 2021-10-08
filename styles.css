@@ -280,6 +280,34 @@ body {
   background: black;
 }
 
+.page-web3__img {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .page-web3__content {
+    --img-font-size: 8rem;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr calc(1.15 * var(--img-font-size));
+    grid-template-areas:
+      "header header"
+      "text   img";
+  }
+
+  .page-web3 .page__header {
+    grid-area: header;
+  }
+
+  .page-web3__text {
+    grid-area: text;
+    align-self: center;
+  }
+  .page-web3__img {
+    display: block;
+  }
+}
+
 .page-web3 .page__header a {
   --underline-color: var(--primary-600);
 }
@@ -321,4 +349,25 @@ body {
 .page-web3__link:active {
   color: inherit;
   background: transparent;
+}
+
+.page-web3__big {
+  margin-bottom: -2rem;
+  font-family: var(--font-mono);
+  font-size: var(--img-font-size);
+  line-height: 1;
+  letter-spacing: -.1em;
+  writing-mode: vertical-rl;
+  /* https://codeworkshop.dev/blog/2020-08-13-how-to-add-a-gradient-to-text-with-css/ */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(
+    to bottom,
+    #ffffffff 0%,
+    #ffffff00 100%);
+  pointer-events: none;
+  user-select: none;
 }
