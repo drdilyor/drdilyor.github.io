@@ -33,7 +33,8 @@ function onTagClick(e) {
 
 function projectFromDom(elem) {
   return {
-    name: elem.querySelector('.project__name').textContent,
+    name: elem.querySelector('.project__name a').textContent,
+    link: elem.querySelector('.project__name a').href,
     description: elem.querySelector('.project__description').textContent,
     tags: [...elem.querySelectorAll('.project__tags__item')].map(
       tag => tag.textContent,
@@ -44,7 +45,10 @@ function projectFromDom(elem) {
 
       const name = document.createElement('h4')
       name.className = 'project__name'
-      name.textContent = this.name
+      const nameLink = document.createElement('a')
+      nameLink.href = this.link
+      nameLink.textContent = this.name
+      name.appendChild(nameLink)
       elem.appendChild(name)
 
       const description = document.createElement('p')
