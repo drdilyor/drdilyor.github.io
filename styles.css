@@ -468,8 +468,13 @@ body {
 
 .project-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-gap: var(--size-4);
+}
+
+@media (min-width: 768px) {
+  .project-list {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .project {
@@ -490,14 +495,21 @@ body {
 
 .project__tags {
   display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
+.project__tags--filter {
+  justify-content: center;
+  margin-bottom: var(--size-4);
+}
+
 .project__tags__item {
   padding: var(--size-2) var(--size-6);
-  margin: 0 var(--size-2) 0 0;
+  margin: 0 var(--size-2) var(--size-2) 0;
   font-family: var(--font-mono);
   font-weight: 600;
   line-height: 1;
