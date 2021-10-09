@@ -48,7 +48,7 @@
    * lg: 1200px
   */
 
-  font-size: 18px;
+  font-size: 16px;
   font-family: var(--font-text);
 }
 
@@ -437,7 +437,9 @@ body {
 }
 
 .skill__progress-text {
+  align-self: end;
   margin: 0;
+  font-size: .9rem;
 }
 
 .skill__progress {
