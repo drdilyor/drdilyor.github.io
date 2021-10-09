@@ -1,3 +1,14 @@
+const commandElem = document.querySelector('.term__command')
+const command = commandElem.textContent
+let animationI = 0
+
+setTimeout(function self() {
+  commandElem.textContent = command.slice(0, animationI++)
+  if (animationI <= command.length) {
+    setTimeout(self, 75)
+  }
+})
+
 document.querySelector('.page-head__content').addEventListener('click', function() {
   document.querySelector('.term__input').focus()
 })
