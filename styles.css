@@ -179,6 +179,10 @@ body {
   background: rgba(0, 0, 0, .5);
 }
 
+.term__command {
+  white-space: pre;
+}
+
 .term__input {
   width: 0;
   margin: 0;
@@ -299,7 +303,7 @@ body {
     --img-font-size: 8rem;
     display: grid;
     grid-template-rows: auto auto;
-    grid-template-columns: 1fr calc(1.15 * var(--img-font-size));
+    grid-template-columns: 1fr calc(1.2 * var(--img-font-size));
     grid-template-areas:
       "header header"
       "text   img";
