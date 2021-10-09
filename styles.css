@@ -210,7 +210,7 @@ body {
   left: 0;
   right: 0;
   top: 0;
-  padding: var(--size-4) var(--size-8);
+  padding: var(--size-1) var(--size-8);
   font-family: var(--font-mono);
   line-height: 1;
   color: black;
@@ -486,6 +486,15 @@ body {
   margin: 0;
   font-family: var(--font-mono);
   color: var(--gray-800);
+}
+
+.project__name > a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.project__name > a:hover {
+  text-decoration: underline;
 }
 
 .project__description {
