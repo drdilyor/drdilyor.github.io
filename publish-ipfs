@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 mkdir ipfs
-cp -r css img js index.html ipfs/
+cp -r css fonts img js index.html ipfs/
 sed -i 's/^.*IPFSLINK.*$//' ipfs/index.html
 
 cid=$(ipfs add -Qr ipfs/)
