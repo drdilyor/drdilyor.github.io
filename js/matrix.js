@@ -11,14 +11,13 @@ let _loopTimeoutId
 const FRAME_MS = 1000 / 15
 
 let charStreams = []
-let randomTexts = [
+let readableTexts = [
   '[root@156.81.12.5]# ls /www/wwwroot',
   'drdilyor developer',
   'function(',
   'inoremap <expr> <tab> MyTabImpl()',
   'javascript python backend',
   'telegram linux arch',
-  '\\*${]+-#λ?!.#&>,@/=',
 ]
 
 function setupCanvas() {
@@ -45,7 +44,7 @@ function startMatrix() {
   _loopTimeoutId = setTimeout(loop, FRAME_MS)
   _pusherTimeoutId = setTimeout(function self() {
     charStreams.push(newCharStream())
-    _pusherTimeoutId = setTimeout(self, 2e5 / canvas.width)
+    _pusherTimeoutId = setTimeout(self, 3e5 / canvas.width)
   })
   _matrixPlaying = true
 }
@@ -67,10 +66,29 @@ function randomRange(a, exclusiveB) {
   return (Math.random() * (exclusiveB - a) | 0) + a
 }
 
+function nonsense() {
+  const chars = [
+    '$~&%[{}(=*)+]!#8`\\@/?<>',
+    '卂乃匚刀乇下厶工丁乚从口尸尺丂丅凵リ山乂丫乙',
+  ][randomRange(0, 2)]
+
+  const length = randomRange(5, 15)
+  let result = []
+
+  for (let i = 0; i < length; i++) {
+    result.push(chars[randomRange(0, chars.length)])
+  }
+  return result.join('')
+}
+
 function newCharStream() {
-  let text = randomTexts[randomRange(0, randomTexts.length)]
+  let text = (Math.random() < 1 / 5)
+  ? readableTexts[randomRange(0, readableTexts.length)]
+  : nonsense()
+
   let charSize = {
-    width: 16,
+    // 1024 is a random magic number
+    width: text.codePointAt(0) > 1024 ? 24 : 16,
     height: 24,
   }
   let direction = [
@@ -125,10 +143,9 @@ window.addEventListener('resize', setupCanvas)
 window.addEventListener('scroll', function() {
   if (window.scrollY < canvas.height) {
     startMatrix()
-    // sorry for coupling things
-    document.querySelector('.term__input').focus()
   } else {
     stopMatrix()
+    // sorry for coupling things
     document.querySelector('.term__input').blur()
   }
 }, {passive: true})
