@@ -634,3 +634,10 @@ body {
 .teacher__about a:hover {
   text-decoration: underline;
 }
+
+.thats-all {
+  padding: 0 var(--size-4);
+  margin: 0 0 var(--size-8) 0;
+  font-family: var(--font-mono);
+  text-align: center;
+}

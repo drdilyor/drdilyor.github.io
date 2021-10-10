@@ -34,7 +34,7 @@ document.querySelector('.term__input').addEventListener('keydown', function(e) {
       if (/^[0-9a-zA-Z$~&%[{}(=*)+\]!#@\/,.<>;:  ]$/.test(e.key)) {
         command.textContent += e.key
       } else {
-        alert('The key you just pressed is unsupported to keep things simple.')
+        alert('Term: The key you just pressed is unsupported to keep things simple.')
         console.log(e.key)
       }
   }
@@ -56,9 +56,9 @@ function execute(command) {
         elem.scrollIntoView()
       }
     } else {
-      alert('The command you just entered is unsupported to keep things simple.')
+      alert('Term: The command you just entered is unsupported to keep things simple.')
     }
   } else {
-    alert('The command you just entered is unsupported to keep things simple.')
+    alert('Term: The command you just entered is unsupported to keep things simple.')
   }
 }
