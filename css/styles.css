@@ -44,6 +44,7 @@
 
   /*
    * Screen sizes:
+   * sm: 540px
    * md: 768px
    * lg: 1200px
   */
@@ -391,6 +392,45 @@ body {
     #ffffff00 100%);
   pointer-events: none;
   user-select: none;
+}
+
+.skill-legend {
+  display: flex;
+  flex-direction: column;
+  padding: var(--size-4);
+}
+
+@media (min-width: 540px) {
+  .skill-legend {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.skill-legend__item {
+  display: flex;
+  align-items: center;
+  margin-right: var(--size-8);
+}
+
+.skill-legend__item::before {
+  content: '';
+  display: block;
+  width: var(--size-8);
+  height: var(--size-8);
+  margin-right: var(--size-4);
+}
+
+.skill-legend__item--less::before {
+  background: var(--purple);
+}
+
+.skill-legend__item--more::before {
+  background: var(--blue);
+}
+
+.skill-legend__item--full::before {
+  background: var(--green);
 }
 
 .skill-category {
