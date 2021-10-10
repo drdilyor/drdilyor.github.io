@@ -1,0 +1,79 @@
+/* ExtraLight {{{ */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 200;
+  src: url(TitilliumWeb-ExtraLight.ttf);
+}
+
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 200;
+  src: url(TitilliumWeb-ExtraLightItalic.ttf);
+}
+/* }}} */
+
+/* Light {{{ */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: url(TitilliumWeb-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 300;
+  src: url(TitilliumWeb-LightItalic.ttf);
+}
+/* }}} */
+
+/* Regular {{{ */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 400;
+  src: url(TitilliumWeb-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 400;
+  src: url(TitilliumWeb-Italic.ttf);
+}
+/* }}} */
+
+/* SemiBold {{{ */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 600;
+  src: url(TitilliumWeb-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 600;
+  src: url(TitilliumWeb-SemiBoldItalic.ttf);
+}
+/* }}} */
+
+/* Bold {{{ */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 700;
+  src: url(TitilliumWeb-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 700;
+  src: url(TitilliumWeb-BoldItalic.ttf);
+}
+/* }}} */
