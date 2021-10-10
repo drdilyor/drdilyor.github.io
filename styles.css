@@ -298,7 +298,7 @@ body {
   display: none;
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .page-web3__content {
     --img-font-size: 8rem;
     display: grid;
@@ -404,7 +404,7 @@ body {
   grid-gap: var(--size-4);
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .skill-list {
     grid-template-columns: 1fr 1fr;
   }
@@ -545,4 +545,92 @@ body {
 
 .project__tags__item--active {
   outline-color: var(--primary-500);
+}
+
+.teacher-list {
+  display: grid;
+  grid-gap: var(--size-4);
+}
+
+@media (min-width: 768px) {
+  .teacher-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  .teacher-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.teacher {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "avatar name"
+    "about about";
+  grid-gap: var(--size-2) var(--size-4);
+  padding: var(--size-6) var(--size-8);
+  border: var(--size-0-5) solid var(--gray-300);
+}
+
+/* layout */
+.teacher__avatar {
+  grid-area: avatar;
+}
+
+.teacher__name {
+  grid-area: name;
+  align-self: center;
+}
+
+
+.teacher__about {
+  grid-area: about;
+}
+/* end layout */
+
+.teacher__avatar {
+  grid-area: avatar;
+  /* these are also set in html */
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.teacher__avatar--color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  background: var(--purple);
+}
+
+.teacher__name {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.teacher__about {
+  margin: 0;
+}
+
+.teacher__about strong {
+  font-weight: 600;
+}
+
+.teacher__about a {
+  text-decoration: none;
+  color: var(--primary-600);
+}
+
+.teacher__about a:hover {
+  text-decoration: underline;
 }

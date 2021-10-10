@@ -125,7 +125,10 @@ window.addEventListener('resize', setupCanvas)
 window.addEventListener('scroll', function() {
   if (window.scrollY < canvas.height) {
     startMatrix()
+    // sorry for coupling things
+    document.querySelector('.term__input').focus()
   } else {
     stopMatrix()
+    document.querySelector('.term__input').blur()
   }
 }, {passive: true})
