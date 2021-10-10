@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+mkdir ipfs
+cp -r css img js index.html ipfs/
+sed -i 's/^.*IPFSLINK.*$//' ipfs/index.html
+
+cid=$(ipfs add -Qr ipfs/)
+echo "Added to IPFS: $cid"
+rm -rf ipfs
+
+sed -ri "s/IPFSLINK href=\"[^\"]*\"/IPFSLINK href=\"https:\/\/ipfs.io\/ipfs\/$cid\"/" index.html
+git add index.html
+git commit -m "Update IPFS link"
