@@ -22,11 +22,20 @@ document.querySelector('.term__input').addEventListener('keydown', function(e) {
     case 'Backspace':
       command.textContent = command.textContent.slice(0, -1)
       break
+    case 'Control':
+    case 'Alt':
+    case 'OS':
+    case 'CapsLock':
+    case 'ShiftLock':
+    case 'ScrollLock':
+		case 'Tab':
+      break
     default:
       if (/^[0-9a-zA-Z$~&%[{}(=*)+\]!#@\/,.<>;:  ]$/.test(e.key)) {
         command.textContent += e.key
       } else {
         alert('The key you just pressed is unsupported to keep things simple.')
+        console.log(e.key)
       }
   }
 })
