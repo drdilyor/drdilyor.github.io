@@ -256,11 +256,6 @@ body {
   padding-top: var(--size-8);
 }
 
-.about__img + .about__text {
-  flex-grow: .9;
-  font-size: 18px;
-}
-
 .about__text strong {
   font-weight: 600;
 }
@@ -268,8 +263,10 @@ body {
 @media (min-width: 768px) {
   .about {
     flex-direction: row;
+    align-items: center;
   }
   .about__text {
+    padding-top: 0;
     padding-left: var(--size-8);
   }
 }
@@ -687,4 +684,8 @@ body {
   margin: 0 0 var(--size-8) 0;
   font-family: var(--font-mono);
   text-align: center;
+}
+
+.emoji {
+  vertical-align: bottom;
 }
