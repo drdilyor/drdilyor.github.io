@@ -7,7 +7,7 @@ cid=$(ipfs add -Qr ipfs/)
 echo "Added to IPFS: $cid"
 
 # flag is only for testing purposes
-if [ "$1" != "--no-preserve-dir" ]; then
+if [ "$1" != "--preserve-dir" ]; then
   rm -rf ipfs
 fi
 
