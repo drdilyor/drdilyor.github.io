@@ -5,7 +5,11 @@ sed -i 's/^.*IPFSLINK.*$//' ipfs/index.html
 
 cid=$(ipfs add -Qr ipfs/)
 echo "Added to IPFS: $cid"
-rm -rf ipfs
+
+# flag is only for testing purposes
+if [ "$1" != "--no-preserve-dir" ]; then
+  rm -rf ipfs
+fi
 
 sed -ri "s/IPFSLINK href=\"[^\"]*\"/IPFSLINK href=\"https:\/\/ipfs.io\/ipfs\/$cid\"/" index.html
 git add index.html
