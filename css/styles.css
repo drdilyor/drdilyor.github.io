@@ -38,6 +38,7 @@
 
   --duration-short: 90ms;
   --duration-swift: 200ms;
+  --duration-long: 500ms;
 
   --font-text: "Titillium Web", "Arial", sans-serif;
   --font-mono: "IBM Plex Mono", "JetBrains Mono", "Fira Code", "FiraCode Nerd Font", monospace;
@@ -497,17 +498,33 @@ body {
 
 .skill__progress--less {
   width: 20%;
-  background: var(--purple);
+  --background: var(--purple);
 }
 
 .skill__progress--more {
   width: 60%;
-  background: linear-gradient(to right, var(--purple) 0%, var(--blue) 60%);
+  --background: linear-gradient(to right, var(--purple) 0%, var(--blue) 60%);
 }
 
 .skill__progress--full {
   width: 100%;
-  background: linear-gradient(to right, var(--purple) 0%, var(--blue) 30%, var(--green) 60%);
+  --background: linear-gradient(to right, var(--purple) 0%, var(--blue) 30%, var(--green) 60%);
+}
+
+.skill__progress--animate {
+  transform-origin: left;
+  animation: progress var(--duration-long) forwards;
+}
+
+@keyframes progress {
+  from {
+    background: var(--background);
+    transform: scaleX(0);
+  }
+  to {
+    background: var(--background);
+    transform: scaleX(1);
+  }
 }
 
 .page-projects {
